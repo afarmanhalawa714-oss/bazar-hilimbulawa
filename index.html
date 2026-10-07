@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazar OMK St. Laurensius Hilimbulawa</title>
+    <style>
+        /* --- BASE STYLE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* MENGGANTI BACKGROUND DENGAN FOTO LOKAL */
+            background: url('bacground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(240, 249, 241, 0.85);
+            z-index: -1;
+        }
+
+        /* --- GREEN HEADER HERO --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, #4caf50 0%, #66bb6a 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #ffeb3b;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px #2e7d32;
+            color: #fffbdf;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .hero h2 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #e8f5e9;
+        }
+
+        /* --- LAYOUT GRID --- */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- SISI KIRI: PROMO & TOMBOL --- */
+        .info-side {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .promo-badge {
+            background: #ffeb3b;
+            color: #222;
+            display: inline-block;
+            padding: 8px 15px;
+            font-weight: 800;
+            border-radius: 5px;
+            box-shadow: 2px 2px 0px #c6ff00;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .features-list li {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        .delivery-promo {
+            background: #ffe082;
+            border-left: 5px solid #ffb300;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .order-title {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-order {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-wa1 {
+            background-color: #25d366;
+        }
+
+        .btn-wa2 {
+            background-color: #128c7e;
+        }
+
+        .btn-order:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- SISI KANAN: STAND BAZAR & MENU --- */
+        .visual-side {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 3px solid #81c784;
+            animation: floatAnimation 4s ease-in-out infinite;
+        }
+
+        .stand-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #ddd;
+        }
+
+        .stand-header h3 {
+            font-size: 1.4rem;
+            color: #2e7d32;
+            font-weight: 800;
+        }
+
+        .stand-header p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .menu-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #4caf50;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+        }
+
+        .menu-item:hover {
+            background-color: #e8f5e9;
+        }
+
+        .menu-price {
+            color: #e65100;
+        }
+
+        .stand-tag {
+            display: block;
+            text-align: center;
+            background: #795548;
+            color: white;
+            padding: 8px;
+            font-weight: 800;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <h1>BAZAR</h1>
+        <h2>Orang Muda Katolik (OMK)</h2>
+        <p>Gereja Stasi St. Laurensius Hilimbulawa</p>
+    </header>
+
+    <main class="container">
+
+        <section class="info-side">
+            <div class="promo-badge">AYO BURUAN BELI!!!</div>
+
+            <ul class="features-list">
+                <li>✓ Menerima Pesanan Online</li>
+                <li>✓ Siap Diantar di Rumah Masing-masing</li>
+            </ul>
+
+            <div class="delivery-promo">
+                🛵 GRATIS ONGKIR!<br>
+                <span style="font-size: 0.85rem; font-weight: normal; color: #555;">Segera hubungi nomor di bawah
+                    ini</span>
+            </div>
+
+            <h3 class="order-title">Klik tombol di bawah langsung terbuka ke aplikasi WhatsApp:</h3>
+            <div class="btn-group">
+                <!-- URL khusus agar memicu langsung aplikasi bawaan HP -->
+                <a href="whatsapp://send?phone=6285217767956&text=Halo%20OMK%20Hilimbulawa,%20saya%20mau%20pesan%20Bazar"
+                    class="btn-order btn-wa1">
+                    💬 Hubungi: 0852-1776-7956
+                </a>
+                <a href="whatsapp://send?phone=6281361338189&text=Halo%20OMK%20Hilimbulawa,%20saya%20mau%20pesan%20Bazar"
+                    class="btn-order btn-wa2">
+                    💬 Hubungi: 0813-6133-8189
+                </a>
+            </div>
+        </section>
+
+        <section class="visual-side">
+            <div class="stand-header">
+                <h3>🎪 BAZAR KREATIF</h3>
+                <p>Aneka Pilihan Hidangan OMK</p>
+            </div>
+
+            <h4 class="menu-title">📋 Pilihan Menu Tersedia:</h4>
+
+            <div class="menu-item">
+                <span>🍱 Makanan Berat (Nasi & Lauk)</span>
+                <span class="menu-price">Tersedia</span>
+            </div>
+
+            <div class="menu-item">
+                <span>🍿 Camilan & Jajanan Pasar</span>
+                <span class="menu-price">Tersedia</span>
+            </div>
+
+            <div class="menu-item">
+                <span>🥤 Minuman Segar / Es Cup</span>
+                <span class="menu-price">Tersedia</span>
+            </div>
+
+            <div class="stand-tag">BAZAR OMK HILIMBULAWA</div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
